@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .calculator {
+            display: inline-block;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100px;
+            height: 30px;
+            margin: 5px;
+        }
+
+        button {
+            width: 45px;
+            height: 45px;
+            margin: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #34495e;
+        }
+
+        #result {
+            width: 210px;
+            height: 30px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" id="result" readonly>
+    <br>
+    <button onclick="clearScreen()">C</button>
+    <button onclick="display('/')">/</button>
+    <button onclick="display('*')">*</button>
+    <button onclick="backspace()">←</button>
+    <br>
+    <button onclick="display('7')">7</button>
+    <button onclick="display('8')">8</button>
+    <button onclick="display('9')">9</button>
+    <button onclick="display('-')">-</button>
+    <br>
+    <button onclick="display('4')">4</button>
+    <button onclick="display('5')">5</button>
+    <button onclick="display('6')">6</button>
+    <button onclick="display('+')">+</button>
+    <br>
+    <button onclick="display('1')">1</button>
+    <button onclick="display('2')">2</button>
+    <button onclick="display('3')">3</button>
+    <button onclick="calculate()">=</button>
+    <br>
+    <button onclick="display('0')">0</button>
+    <button onclick="display('.')">.</button>
+</div>
+
+<script>
+    function display(value) {
+        document.getElementById('result').value += value;
+    }
+
+    function clearScreen() {
+        document.getElementById('result').value = '';
+    }
+
+    function backspace() {
+        let currentValue = document.getElementById('result').value;
+        document.getElementById('result').value = currentValue.slice(0, -1);
+    }
+
+    function calculate() {
+        let expression = document.getElementById('result').value;
+        if (expression) {
+            document.getElementById('result').value = eval(expression);
+        }
+    }
+</script>
+
+</body>
+</html>
+
